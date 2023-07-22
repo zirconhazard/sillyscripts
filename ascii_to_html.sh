@@ -1,14 +1,3 @@
-#!/bin/bash
-
-#MIT License
-
-#Copyright (c) 2023 zirconhazard
-
-#Permission is hereby granted, free of charge, to any person obtaining a copy
-#of this software and associated documentation files (the "Software"), to deal
-#in the Software without restriction, including without limitation the rights
-#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-#copies of the Software, and to permit persons to whom the Software is
 #furnished to do so, subject to the following conditions:
 
 #The above copyright notice and this permission notice shall be included in all
@@ -38,14 +27,26 @@ fi
 
 ## check if file exists
 if [ "$inputfile" == "--help" ]; then
-	echo "HELP!!!!!!!!!!"
+	echo "Usage: $0 [INPUTFILE/OPTION]... [OUTPUTFILE]..."
+	echo "Converts text into a more html friendly form.
+
+About arguments:
+--help			show this help information.
+one argument		filepath to inputfile. (prompt user to save.)
+two arguments		first inputfile second outputfile.
+no arguments		prompt user to enter inputfile and outputfile.
+
+exsamples:
+$0 myasciiart.txt output.html
+        
+Bye. <(^v^)>"
 	exit;
 elif [ ! -f "$inputfile" ]; then
 	echo "File not found!"
 	exit;
 else
 	## load text from file
-	echo "Loading text from '$inputfile'."
+	#echo "Loading text from '$inputfile'."
 	text=`cat $inputfile`
 
 	## replace certain characters/output html friendly text
@@ -65,14 +66,14 @@ else
 	beginfile=$'<p style="line-height:1; font-family:monospace; white-space:pre;" >\n'
 	endfile=$'\n</p>'
 	output="$beginfile$output$endfile"
-	echo "---------------------------output--------------------------------"
+	#echo "---------------------------output--------------------------------"
 	echo "$output"
-	echo "-----------------------------------------------------------------"
+	#echo "-----------------------------------------------------------------"
 
 	## save output?
 	if [ "$outputfile" != "" ] && touch "$outputfile"; then
 		echo "$output" > "$outputfile"
-		echo "Created file '$outputfile'.";
+		#echo "Created file '$outputfile'.";
 	else
 		read -e -p "Save to file? [y/N] " choice
 		if [[ "$choice" == [Yy]* ]]; then
