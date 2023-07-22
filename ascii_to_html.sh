@@ -17,7 +17,7 @@ else
 	echo "Loading text from $inputfile"
 	text=`cat $inputfile`
 
-	## replace certain characters/output html compatiple text
+	## replace certain characters/output html friendly text
 	output=""
 	for ((i=1;i<=${#text};i++)); do
 		c=${text:$i-1:1}
