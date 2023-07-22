@@ -32,11 +32,11 @@ fi
 
 ## check if file exists
 if [ ! -f "$inputfile" ]; then
-	echo "File not found"
+	echo "File not found!"
 	exit;
 else
 	## load text from file
-	echo "Loading text from $inputfile"
+	echo "Loading text from $inputfile..."
 	text=`cat $inputfile`
 
 	## replace certain characters/output html friendly text
@@ -77,7 +77,7 @@ else
 			echo "$output" >> "$outputfile";
 			echo "$endfile" >> "$outputfile";
 		else
-			echo "could not create file."
+			echo "Could not create file!"
 			exit;
 		fi
 	else
